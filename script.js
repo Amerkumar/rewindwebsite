@@ -120,3 +120,31 @@ window.addEventListener('scroll', () => {
         navbar.style.boxShadow = 'none';
     }
 }, { passive: true });
+
+// ================================
+// SCREENSHOTS CAROUSEL
+// ================================
+
+const carousel = document.querySelector('.screenshots-carousel');
+if (carousel) {
+    const cards = Array.from(carousel.querySelectorAll('.screenshot-card'));
+    const positions = ['hidden-left', 'left', 'center', 'right', 'hidden-right', 'hidden-right'];
+
+    // Track current rotation state
+    let currentIndex = 0;
+
+    function rotateCarousel() {
+        // Shift positions to create rotation effect (moving right to left)
+        currentIndex = (currentIndex + 1) % cards.length;
+
+        cards.forEach((card, index) => {
+            // Calculate position index based on current rotation
+            const posIndex = (index - currentIndex + cards.length) % cards.length;
+            const position = positions[posIndex] || 'hidden-right';
+            card.setAttribute('data-position', position);
+        });
+    }
+
+    // Auto-rotate every 3 seconds
+    setInterval(rotateCarousel, 3000);
+}
