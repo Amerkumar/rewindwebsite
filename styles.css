@@ -366,6 +366,7 @@ nav {
     width: 260px;
     z-index: 2;
     border: 1px solid var(--border);
+    animation: float 6s ease-in-out infinite;
 }
 
 .screenshot-left,
@@ -376,10 +377,40 @@ nav {
 
 .screenshot-left {
     transform: scale(0.9) rotate(-6deg) translateX(30px);
+    animation: float-left 7s ease-in-out infinite;
 }
 
 .screenshot-right {
     transform: scale(0.9) rotate(6deg) translateX(-30px);
+    animation: float-right 8s ease-in-out infinite;
+}
+
+/* Floating animations for screenshots */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes float-left {
+    0%, 100% {
+        transform: scale(0.9) rotate(-6deg) translateX(30px) translateY(0);
+    }
+    50% {
+        transform: scale(0.9) rotate(-6deg) translateX(30px) translateY(-15px);
+    }
+}
+
+@keyframes float-right {
+    0%, 100% {
+        transform: scale(0.9) rotate(6deg) translateX(-30px) translateY(0);
+    }
+    50% {
+        transform: scale(0.9) rotate(6deg) translateX(-30px) translateY(-25px);
+    }
 }
 
 /* ================================
